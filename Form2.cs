@@ -98,5 +98,12 @@ namespace Library
         {
             softwareDevelopmentListBox.DataSource = null;
         }
+
+        private void showInPilesButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form3 f = new Form3();
+            f.Show();
+        }
     }
 }

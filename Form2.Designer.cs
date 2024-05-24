@@ -50,6 +50,7 @@
             this.clearNetworkButton = new System.Windows.Forms.Button();
             this.clearMathButton = new System.Windows.Forms.Button();
             this.clearSWdvlpmntButton = new System.Windows.Forms.Button();
+            this.showInPilesButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // allBooksListBox
@@ -64,7 +65,7 @@
             // viewAllButton
             // 
             this.viewAllButton.BackColor = System.Drawing.Color.SteelBlue;
-            this.viewAllButton.Location = new System.Drawing.Point(158, 536);
+            this.viewAllButton.Location = new System.Drawing.Point(81, 536);
             this.viewAllButton.Name = "viewAllButton";
             this.viewAllButton.Size = new System.Drawing.Size(113, 33);
             this.viewAllButton.TabIndex = 1;
@@ -75,7 +76,7 @@
             // viewCategoriesButton
             // 
             this.viewCategoriesButton.BackColor = System.Drawing.Color.SteelBlue;
-            this.viewCategoriesButton.Location = new System.Drawing.Point(526, 536);
+            this.viewCategoriesButton.Location = new System.Drawing.Point(387, 536);
             this.viewCategoriesButton.Name = "viewCategoriesButton";
             this.viewCategoriesButton.Size = new System.Drawing.Size(160, 33);
             this.viewCategoriesButton.TabIndex = 2;
@@ -167,7 +168,7 @@
             // addNewBookButton
             // 
             this.addNewBookButton.BackColor = System.Drawing.Color.SteelBlue;
-            this.addNewBookButton.Location = new System.Drawing.Point(341, 536);
+            this.addNewBookButton.Location = new System.Drawing.Point(235, 536);
             this.addNewBookButton.Name = "addNewBookButton";
             this.addNewBookButton.Size = new System.Drawing.Size(116, 33);
             this.addNewBookButton.TabIndex = 12;
@@ -272,12 +273,24 @@
             this.clearSWdvlpmntButton.UseVisualStyleBackColor = false;
             this.clearSWdvlpmntButton.Click += new System.EventHandler(this.clearSWdvlpmntButton_Click);
             // 
+            // showInPilesButton
+            // 
+            this.showInPilesButton.BackColor = System.Drawing.Color.SteelBlue;
+            this.showInPilesButton.Location = new System.Drawing.Point(584, 536);
+            this.showInPilesButton.Name = "showInPilesButton";
+            this.showInPilesButton.Size = new System.Drawing.Size(104, 33);
+            this.showInPilesButton.TabIndex = 22;
+            this.showInPilesButton.Text = "SHOW IN PILES";
+            this.showInPilesButton.UseVisualStyleBackColor = false;
+            this.showInPilesButton.Click += new System.EventHandler(this.showInPilesButton_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(800, 591);
+            this.Controls.Add(this.showInPilesButton);
             this.Controls.Add(this.clearSWdvlpmntButton);
             this.Controls.Add(this.clearMathButton);
             this.Controls.Add(this.clearNetworkButton);
@@ -332,5 +345,6 @@
         private System.Windows.Forms.Button clearNetworkButton;
         private System.Windows.Forms.Button clearMathButton;
         private System.Windows.Forms.Button clearSWdvlpmntButton;
+        private System.Windows.Forms.Button showInPilesButton;
     }
 }

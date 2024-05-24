@@ -1,0 +1,102 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Library
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+        private void viewAllButton_Click(object sender, EventArgs e)
+        {
+            ReadDataFile data = new ReadDataFile();
+            allBooksListBox.DataSource=data.ReadBooksFromFile();
+        }
+
+        private void viewCategoriesButton_Click(object sender, EventArgs e)
+        {
+            BookDataStructure data = new BookDataStructure();
+            computerScienceListBox.DataSource = data.GetComputerScience();
+            networkListBox.DataSource=data.GetNetworking();
+            mathListBox.DataSource=data.GetMathematics();
+            softwareDevelopmentListBox.DataSource=data.GetSoftwareDevelopment();
+        }
+
+        private void addNewBookButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 f = new Form1();
+            f.Show();
+        }
+
+        private void viewCompSciButton_Click(object sender, EventArgs e)
+        {
+            BookDataStructure data = new BookDataStructure();
+            if (data.GetComputerScience().Count == 0)
+            {
+                MessageBox.Show("There are no books in this category");
+            }
+            computerScienceListBox.DataSource = data.GetComputerScience();
+        }
+
+        private void viewNetworkButton_Click(object sender, EventArgs e)
+        {
+            BookDataStructure data = new BookDataStructure();
+            if (data.GetNetworking().Count == 0)
+            {
+                MessageBox.Show("There are no books in this category");
+            }
+            networkListBox.DataSource = data.GetNetworking();
+        }
+
+        private void viewMathButton_Click(object sender, EventArgs e)
+        {
+            BookDataStructure data = new BookDataStructure();
+            if (data.GetMathematics().Count == 0)
+            {
+                MessageBox.Show("There are no books in this category");
+            }
+            mathListBox.DataSource = data.GetMathematics();
+        }
+
+        private void viewSWdvlpmntButton_Click(object sender, EventArgs e)
+        {
+            BookDataStructure data = new BookDataStructure();
+            if (data.GetSoftwareDevelopment().Count == 0)
+            {
+                MessageBox.Show("There are no books in this category");
+            }
+            softwareDevelopmentListBox.DataSource = data.GetSoftwareDevelopment();
+        }
+
+        private void clearCompSciButton_Click(object sender, EventArgs e)
+        {
+            computerScienceListBox.DataSource = null;
+        }
+
+        private void clearNetworkButton_Click(object sender, EventArgs e)
+        {
+            networkListBox.DataSource =null;
+        }
+
+        private void clearMathButton_Click(object sender, EventArgs e)
+        {
+            mathListBox.DataSource = null;
+        }
+
+        private void clearSWdvlpmntButton_Click(object sender, EventArgs e)
+        {
+            softwareDevelopmentListBox.DataSource = null;
+        }
+    }
+}

@@ -13,23 +13,37 @@ namespace Library
         {
             booksData.ReadBooksFromFile(); 
         }
-        public List<Book> GetBookByCategory(string category)
-        { 
-             return booksData.books.Where(b => b.Category.Equals(category)).ToList();         
+        public Queue<Book> GetBookByCategory(string category)
+        {
+            return new Queue<Book>(booksData.books.Where(b => b.Category.Equals(category)&& b.Year>1990));
         }
-        public List<Book> GetComputerScience()
+        //Option 2 that does the same, but uses Enqueue:
+        //public Queue<Book> GetBookByCategory(string category)
+        //{
+        //    Queue<Book> result = new Queue<Book>();
+        //    foreach (Book book in booksData.books)
+        //    {
+        //        if (book.Category.Equals(category) && book.Year>1990)
+        //        {
+        //            result.Enqueue(book);
+        //        }
+        //    }
+        //    return result;
+        //}
+       
+        public Queue<Book> GetComputerScience()
         {
             return GetBookByCategory(Config.Categories[0]);
         }
-        public List<Book> GetNetworking()
+        public Queue<Book> GetNetworking()
         {
             return GetBookByCategory(Config.Categories[1]);
         }
-        public List<Book> GetMathematics()
+        public Queue<Book> GetMathematics()
         {
             return GetBookByCategory(Config.Categories[2]);
         }
-        public List<Book> GetSoftwareDevelopment()
+        public Queue<Book> GetSoftwareDevelopment()
         {
             return GetBookByCategory(Config.Categories[3]);
         }

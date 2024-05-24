@@ -26,10 +26,10 @@ namespace Library
         private void viewCategoriesButton_Click(object sender, EventArgs e)
         {
             BookDataStructure data = new BookDataStructure();
-            computerScienceListBox.DataSource = data.GetComputerScience();
-            networkListBox.DataSource=data.GetNetworking();
-            mathListBox.DataSource=data.GetMathematics();
-            softwareDevelopmentListBox.DataSource=data.GetSoftwareDevelopment();
+            computerScienceListBox.DataSource = data.GetComputerScience().ToList();
+            networkListBox.DataSource=data.GetNetworking().ToList();
+            mathListBox.DataSource=data.GetMathematics().ToList();
+            softwareDevelopmentListBox.DataSource=data.GetSoftwareDevelopment().ToList();
         }
 
         private void addNewBookButton_Click(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace Library
             {
                 MessageBox.Show("There are no books in this category");
             }
-            computerScienceListBox.DataSource = data.GetComputerScience();
+            computerScienceListBox.DataSource = data.GetComputerScience().ToList();
         }
 
         private void viewNetworkButton_Click(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace Library
             {
                 MessageBox.Show("There are no books in this category");
             }
-            networkListBox.DataSource = data.GetNetworking();
+            networkListBox.DataSource = data.GetNetworking().ToList();
         }
 
         private void viewMathButton_Click(object sender, EventArgs e)
@@ -66,7 +66,7 @@ namespace Library
             {
                 MessageBox.Show("There are no books in this category");
             }
-            mathListBox.DataSource = data.GetMathematics();
+            mathListBox.DataSource = data.GetMathematics().ToList();
         }
 
         private void viewSWdvlpmntButton_Click(object sender, EventArgs e)
@@ -76,7 +76,7 @@ namespace Library
             {
                 MessageBox.Show("There are no books in this category");
             }
-            softwareDevelopmentListBox.DataSource = data.GetSoftwareDevelopment();
+            softwareDevelopmentListBox.DataSource = data.GetSoftwareDevelopment().ToList();
         }
 
         private void clearCompSciButton_Click(object sender, EventArgs e)

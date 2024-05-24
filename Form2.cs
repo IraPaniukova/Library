@@ -19,85 +19,19 @@ namespace Library
 
         private void viewAllButton_Click(object sender, EventArgs e)
         {
-            ReadDataFile data = new ReadDataFile();
-            allBooksListBox.DataSource=data.ReadBooksFromFile();
+            ReadDataFile allBooks = new ReadDataFile();
+            allBooksListBox.DataSource=allBooks.ReadBooksFromFile();
+            BookDataStructure filteredBooks = new BookDataStructure();
+            filteredListBox.DataSource = filteredBooks.FilteredQueue().ToList();
         }
 
-        private void viewCategoriesButton_Click(object sender, EventArgs e)
-        {
-            BookDataStructure data = new BookDataStructure();
-            computerScienceListBox.DataSource = data.GetComputerScience().ToList();
-            networkListBox.DataSource=data.GetNetworking().ToList();
-            mathListBox.DataSource=data.GetMathematics().ToList();
-            softwareDevelopmentListBox.DataSource=data.GetSoftwareDevelopment().ToList();
-        }
 
         private void addNewBookButton_Click(object sender, EventArgs e)
         {
             this.Hide();
             Form1 f = new Form1();
             f.Show();
-        }
-
-        private void viewCompSciButton_Click(object sender, EventArgs e)
-        {
-            BookDataStructure data = new BookDataStructure();
-            if (data.GetComputerScience().Count == 0)
-            {
-                MessageBox.Show("There are no books in this category");
-            }
-            computerScienceListBox.DataSource = data.GetComputerScience().ToList();
-        }
-
-        private void viewNetworkButton_Click(object sender, EventArgs e)
-        {
-            BookDataStructure data = new BookDataStructure();
-            if (data.GetNetworking().Count == 0)
-            {
-                MessageBox.Show("There are no books in this category");
-            }
-            networkListBox.DataSource = data.GetNetworking().ToList();
-        }
-
-        private void viewMathButton_Click(object sender, EventArgs e)
-        {
-            BookDataStructure data = new BookDataStructure();
-            if (data.GetMathematics().Count == 0)
-            {
-                MessageBox.Show("There are no books in this category");
-            }
-            mathListBox.DataSource = data.GetMathematics().ToList();
-        }
-
-        private void viewSWdvlpmntButton_Click(object sender, EventArgs e)
-        {
-            BookDataStructure data = new BookDataStructure();
-            if (data.GetSoftwareDevelopment().Count == 0)
-            {
-                MessageBox.Show("There are no books in this category");
-            }
-            softwareDevelopmentListBox.DataSource = data.GetSoftwareDevelopment().ToList();
-        }
-
-        private void clearCompSciButton_Click(object sender, EventArgs e)
-        {
-            computerScienceListBox.DataSource = null;
-        }
-
-        private void clearNetworkButton_Click(object sender, EventArgs e)
-        {
-            networkListBox.DataSource =null;
-        }
-
-        private void clearMathButton_Click(object sender, EventArgs e)
-        {
-            mathListBox.DataSource = null;
-        }
-
-        private void clearSWdvlpmntButton_Click(object sender, EventArgs e)
-        {
-            softwareDevelopmentListBox.DataSource = null;
-        }
+        }    
 
         private void showInPilesButton_Click(object sender, EventArgs e)
         {

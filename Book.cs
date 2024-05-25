@@ -14,8 +14,7 @@ namespace Library
     {
         public string Isbn { get; set; }
         public string Authors { get; set; }
-        public string BookName { get; set; }
-        
+        public string BookName { get; set; }     
         public string Publisher { get; set; }
         public int Year { get; set; }
         public string Category { get; set; }
@@ -32,5 +31,9 @@ namespace Library
             Books.Add(bookDescription);
             File.WriteAllLines(filePath, Books);
         }
+        //public bool IsValid()
+        //{
+        //    return Year > 1990 && "ABCD".Contains(Category);
+        //}
     }
 }

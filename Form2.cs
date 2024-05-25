@@ -21,11 +21,13 @@ namespace Library
         {
             ReadDataFile data = new ReadDataFile();
             allBooksListBox.DataSource=data.ReadBooksFromFile();
+            BookDataStructure filteredData = new BookDataStructure();
+            filteredLstBox.DataSource = filteredData.FilteredQueue().ToList();
         }
 
         private void viewCategoriesButton_Click(object sender, EventArgs e)
         {
-            BookDataStructure data = new BookDataStructure();
+            ProcessBooksData data = new ProcessBooksData();
             computerScienceListBox.DataSource = data.GetComputerScience().ToList();
             networkListBox.DataSource=data.GetNetworking().ToList();
             mathListBox.DataSource=data.GetMathematics().ToList();
@@ -41,7 +43,7 @@ namespace Library
 
         private void viewCompSciButton_Click(object sender, EventArgs e)
         {
-            BookDataStructure data = new BookDataStructure();
+            ProcessBooksData data = new ProcessBooksData();
             if (data.GetComputerScience().Count == 0)
             {
                 MessageBox.Show("There are no books in this category");
@@ -51,7 +53,7 @@ namespace Library
 
         private void viewNetworkButton_Click(object sender, EventArgs e)
         {
-            BookDataStructure data = new BookDataStructure();
+            ProcessBooksData data = new ProcessBooksData();
             if (data.GetNetworking().Count == 0)
             {
                 MessageBox.Show("There are no books in this category");
@@ -61,7 +63,7 @@ namespace Library
 
         private void viewMathButton_Click(object sender, EventArgs e)
         {
-            BookDataStructure data = new BookDataStructure();
+            ProcessBooksData data = new ProcessBooksData();
             if (data.GetMathematics().Count == 0)
             {
                 MessageBox.Show("There are no books in this category");
@@ -71,7 +73,7 @@ namespace Library
 
         private void viewSWdvlpmntButton_Click(object sender, EventArgs e)
         {
-            BookDataStructure data = new BookDataStructure();
+            ProcessBooksData data = new ProcessBooksData();
             if (data.GetSoftwareDevelopment().Count == 0)
             {
                 MessageBox.Show("There are no books in this category");
@@ -97,13 +99,6 @@ namespace Library
         private void clearSWdvlpmntButton_Click(object sender, EventArgs e)
         {
             softwareDevelopmentListBox.DataSource = null;
-        }
-
-        private void showInPilesButton_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form3 f = new Form3();
-            f.Show();
         }
     }
 }

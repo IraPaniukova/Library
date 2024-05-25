@@ -50,7 +50,8 @@
             this.clearNetworkButton = new System.Windows.Forms.Button();
             this.clearMathButton = new System.Windows.Forms.Button();
             this.clearSWdvlpmntButton = new System.Windows.Forms.Button();
-            this.showInPilesButton = new System.Windows.Forms.Button();
+            this.filteredBooksLabel = new System.Windows.Forms.Label();
+            this.filteredLstBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // allBooksListBox
@@ -59,7 +60,7 @@
             this.allBooksListBox.HorizontalScrollbar = true;
             this.allBooksListBox.Location = new System.Drawing.Point(36, 33);
             this.allBooksListBox.Name = "allBooksListBox";
-            this.allBooksListBox.Size = new System.Drawing.Size(367, 485);
+            this.allBooksListBox.Size = new System.Drawing.Size(367, 225);
             this.allBooksListBox.TabIndex = 0;
             // 
             // viewAllButton
@@ -76,7 +77,7 @@
             // viewCategoriesButton
             // 
             this.viewCategoriesButton.BackColor = System.Drawing.Color.SteelBlue;
-            this.viewCategoriesButton.Location = new System.Drawing.Point(387, 536);
+            this.viewCategoriesButton.Location = new System.Drawing.Point(516, 536);
             this.viewCategoriesButton.Name = "viewCategoriesButton";
             this.viewCategoriesButton.Size = new System.Drawing.Size(160, 33);
             this.viewCategoriesButton.TabIndex = 2;
@@ -273,16 +274,23 @@
             this.clearSWdvlpmntButton.UseVisualStyleBackColor = false;
             this.clearSWdvlpmntButton.Click += new System.EventHandler(this.clearSWdvlpmntButton_Click);
             // 
-            // showInPilesButton
+            // filteredBooksLabel
             // 
-            this.showInPilesButton.BackColor = System.Drawing.Color.SteelBlue;
-            this.showInPilesButton.Location = new System.Drawing.Point(584, 536);
-            this.showInPilesButton.Name = "showInPilesButton";
-            this.showInPilesButton.Size = new System.Drawing.Size(104, 33);
-            this.showInPilesButton.TabIndex = 22;
-            this.showInPilesButton.Text = "SHOW IN PILES";
-            this.showInPilesButton.UseVisualStyleBackColor = false;
-            this.showInPilesButton.Click += new System.EventHandler(this.showInPilesButton_Click);
+            this.filteredBooksLabel.AutoSize = true;
+            this.filteredBooksLabel.Location = new System.Drawing.Point(33, 276);
+            this.filteredBooksLabel.Name = "filteredBooksLabel";
+            this.filteredBooksLabel.Size = new System.Drawing.Size(73, 13);
+            this.filteredBooksLabel.TabIndex = 23;
+            this.filteredBooksLabel.Text = "Filtered books";
+            // 
+            // filteredLstBox
+            // 
+            this.filteredLstBox.FormattingEnabled = true;
+            this.filteredLstBox.HorizontalScrollbar = true;
+            this.filteredLstBox.Location = new System.Drawing.Point(36, 292);
+            this.filteredLstBox.Name = "filteredLstBox";
+            this.filteredLstBox.Size = new System.Drawing.Size(367, 225);
+            this.filteredLstBox.TabIndex = 22;
             // 
             // Form2
             // 
@@ -290,7 +298,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(800, 591);
-            this.Controls.Add(this.showInPilesButton);
+            this.Controls.Add(this.filteredBooksLabel);
+            this.Controls.Add(this.filteredLstBox);
             this.Controls.Add(this.clearSWdvlpmntButton);
             this.Controls.Add(this.clearMathButton);
             this.Controls.Add(this.clearNetworkButton);
@@ -345,6 +354,7 @@
         private System.Windows.Forms.Button clearNetworkButton;
         private System.Windows.Forms.Button clearMathButton;
         private System.Windows.Forms.Button clearSWdvlpmntButton;
-        private System.Windows.Forms.Button showInPilesButton;
+        private System.Windows.Forms.Label filteredBooksLabel;
+        private System.Windows.Forms.ListBox filteredLstBox;
     }
 }

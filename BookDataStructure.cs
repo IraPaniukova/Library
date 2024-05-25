@@ -9,14 +9,24 @@ namespace Library
     internal class BookDataStructure
     {
         private ReadDataFile booksData = new ReadDataFile();
+      //  private Queue<Book> bookQueue;
         public BookDataStructure()
         {
-            booksData.ReadBooksFromFile(); 
+            booksData.ReadBooksFromFile();
+          //  bookQueue = new Queue<Book>();
         }
-        public Queue<Book> GetBookByCategory(string category)
+
+        public Queue<Book> FilteredQueue()
         {
-            return new Queue<Book>(booksData.books.Where(b => b.Category.Equals(category)&& b.Year>1990));
+            return new Queue<Book>(booksData.books.Where(b =>
+            Config.Categories.Contains(b.Category)
+            && b.Year > 1990));
         }
+
+        //public  Queue<Book> GetBookByCategory(string category)
+        //{ 
+        //    return new Queue<Book>(booksData.books.Where(b => b.Category.Equals(category)&& b.Year>1990));
+        //}
         //Option 2 that does the same, but uses Enqueue:
         //public Queue<Book> GetBookByCategory(string category)
         //{
@@ -30,22 +40,5 @@ namespace Library
         //    }
         //    return result;
         //}
-       
-        public Queue<Book> GetComputerScience()
-        {
-            return GetBookByCategory(Config.Categories[0]);
-        }
-        public Queue<Book> GetNetworking()
-        {
-            return GetBookByCategory(Config.Categories[1]);
-        }
-        public Queue<Book> GetMathematics()
-        {
-            return GetBookByCategory(Config.Categories[2]);
-        }
-        public Queue<Book> GetSoftwareDevelopment()
-        {
-            return GetBookByCategory(Config.Categories[3]);
-        }
     }
 }

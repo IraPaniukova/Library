@@ -13,7 +13,7 @@ namespace Library
 
         public Stack<Book> GetBookByCategory(string category)
         {
-            return new Stack<Book>(booksData.FilteredQueue().Where(b => b.Category.Equals(category)));
+            return new Stack<Book>(booksData.GetFilteredQueue().Where(b => b.Category.Equals(category)));
         }
         
         public Stack<Book> GetComputerScience()

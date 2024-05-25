@@ -16,7 +16,7 @@ namespace Library
           //  bookQueue = new Queue<Book>();
         }
 
-        public Queue<Book> FilteredQueue()
+        public Queue<Book> GetFilteredQueue()
         {
             return new Queue<Book>(booksData.books.Where(b =>
             Config.Categories.Contains(b.Category)

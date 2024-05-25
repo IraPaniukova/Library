@@ -9,36 +9,17 @@ namespace Library
     internal class BookDataStructure
     {
         private ReadDataFile booksData = new ReadDataFile();
-      //  private Queue<Book> bookQueue;
+        private Queue<Book> bookQueueFiltered;
         public BookDataStructure()
         {
             booksData.ReadBooksFromFile();
-          //  bookQueue = new Queue<Book>();
-        }
-
-        public Queue<Book> FilteredQueue()
-        {
-            return new Queue<Book>(booksData.books.Where(b =>
+            bookQueueFiltered = new Queue<Book>(booksData.books.Where(b =>
             Config.Categories.Contains(b.Category)
             && b.Year > 1990));
         }
-
-        //public  Queue<Book> GetBookByCategory(string category)
-        //{ 
-        //    return new Queue<Book>(booksData.books.Where(b => b.Category.Equals(category)&& b.Year>1990));
-        //}
-        //Option 2 that does the same, but uses Enqueue:
-        //public Queue<Book> GetBookByCategory(string category)
-        //{
-        //    Queue<Book> result = new Queue<Book>();
-        //    foreach (Book book in booksData.books)
-        //    {
-        //        if (book.Category.Equals(category) && book.Year>1990)
-        //        {
-        //            result.Enqueue(book);
-        //        }
-        //    }
-        //    return result;
-        //}
+        public Queue<Book> GetFilteredQueue()
+        {
+            return bookQueueFiltered;
+        }
     }
 }

@@ -10,27 +10,39 @@ namespace Library
     {
 
         private BookDataStructure booksData = new BookDataStructure();
+        private Stack<Book> ComputerScienceStack;
+        private Stack<Book> NetworkStack;
+        private Stack<Book> MathStack;
+        private Stack<Book> SoftwareDevelopmentStack;
+        
 
         public Stack<Book> GetBookByCategory(string category)
         {
-            return new Stack<Book>(booksData.FilteredQueue().Where(b => b.Category.Equals(category)));
+            return new Stack<Book>(booksData.GetFilteredQueue().Where(b => b.Category.Equals(category)));
+             
         }
-        
+        public ProcessBooksData()
+        {
+            ComputerScienceStack = GetBookByCategory(Config.Categories[0]);
+            NetworkStack = GetBookByCategory(Config.Categories[1]);
+            MathStack = GetBookByCategory(Config.Categories[2]);
+            SoftwareDevelopmentStack= GetBookByCategory(Config.Categories[3]);
+        }
         public Stack<Book> GetComputerScience()
         {
-            return GetBookByCategory(Config.Categories[0]);
+            return ComputerScienceStack;
         }
         public Stack<Book> GetNetworking()
         {
-            return GetBookByCategory(Config.Categories[1]);
+            return NetworkStack;
         }
         public Stack<Book> GetMathematics()
         {
-            return GetBookByCategory(Config.Categories[2]);
+            return MathStack;
         }
         public Stack<Book> GetSoftwareDevelopment()
         {
-            return GetBookByCategory(Config.Categories[3]);
+            return SoftwareDevelopmentStack;
         }
     }
 }

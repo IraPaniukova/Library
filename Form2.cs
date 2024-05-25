@@ -22,7 +22,7 @@ namespace Library
             ReadDataFile data = new ReadDataFile();
             allBooksListBox.DataSource=data.ReadBooksFromFile();
             BookDataStructure filteredData = new BookDataStructure();
-            filteredLstBox.DataSource = filteredData.FilteredQueue().ToList();
+            filteredLstBox.DataSource = filteredData.GetFilteredQueue().ToList();
         }
 
         private void viewCategoriesButton_Click(object sender, EventArgs e)

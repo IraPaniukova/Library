@@ -263,7 +263,7 @@
             this.alertTextBox.BackColor = System.Drawing.Color.SteelBlue;
             this.alertTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.alertTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.alertTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.alertTextBox.ForeColor = System.Drawing.Color.Pink;
             this.alertTextBox.Location = new System.Drawing.Point(671, 245);
             this.alertTextBox.Multiline = true;
             this.alertTextBox.Name = "alertTextBox";

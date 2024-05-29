@@ -20,7 +20,7 @@ namespace Library
             InitializeComponent();
             alertTextBox.Visible = false;
         }
-        
+
         private void addAuthorButtton_Click(object sender, EventArgs e)
         {
             string author = authorTextBox.Text;
@@ -52,27 +52,37 @@ namespace Library
             {
                 await Alert("CAN NOT ADD! SOME FIELDS ARE EMPTY!");
                 //   MessageBox.Show("Some fields are empty");
+                if (authorsListBox.Items.Count == 0)  
+                {authorsListBox.BackColor = Color.LightPink;
+                 await Task.Delay(2000);
+                 authorsListBox.BackColor = SystemColors.InactiveCaption;
+                }           
             }
             else
             {
-                string isbn = isbnTextBox.Text;
-                string bookAuthors = string.Join(":", Authors);
-                string bookName = bookNameTextBox.Text;
-                string publisher = publisherTextBox.Text;
-                int year = int.Parse(yearTextBox.Text);
-                string category = categoryTextBox.Text;
-                string bookDescription = isbn + "," + bookAuthors + "," + bookName + "," + publisher + "," + year + "," + category;
-                Book.WriteBookToFile(bookDescription);
+                int year = 0;
+                if (int.TryParse(yearTextBox.Text, out _))
+                {
+                    year = int.Parse(yearTextBox.Text);
+                    string isbn = isbnTextBox.Text;
+                    string bookAuthors = string.Join(":", Authors);
+                    string bookName = bookNameTextBox.Text;
+                    string publisher = publisherTextBox.Text;
 
-                isbnTextBox.Clear();
-                bookNameTextBox.Clear();
-                authorsListBox.Items.Clear();
-                authorTextBox.Clear();
-                publisherTextBox.Clear();
-                yearTextBox.Clear();
-                categoryTextBox.Clear();
+                    string category = categoryTextBox.Text;
+                    string bookDescription = isbn + "," + bookAuthors + "," + bookName + "," + publisher + "," + year + "," + category;
+                    Book.WriteBookToFile(bookDescription);
+                    isbnTextBox.Clear();
+                    bookNameTextBox.Clear();
+                    authorsListBox.Items.Clear();
+                    authorTextBox.Clear();
+                    publisherTextBox.Clear();
+                    yearTextBox.Clear();
+                    categoryTextBox.Clear();
 
-                await Alert("THE BOOK IS SAVED");
+                    await Alert("THE BOOK IS SAVED");
+                }
+                else { MessageBox.Show("You can add only digits in the year field"); }
             }
         }
 

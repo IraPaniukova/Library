@@ -23,7 +23,6 @@ namespace Library
         {          
             return Isbn + "," +Authors+","+ BookName + "," + Publisher+","+Year+","+Category ;
         }
-        //TASK: create a class Book to store and manage book information stored in the file. 
         public static void WriteBookToFile(string bookDescription)
         {
             string filePath = "C:\\Users\\I\\source\\repos\\Library\\bin\\Debug\\data.txt";
@@ -31,9 +30,7 @@ namespace Library
             Books.Add(bookDescription);
             File.WriteAllLines(filePath, Books);
         }
-        //public bool IsValid()
-        //{
-        //    return Year > 1990 && "ABCD".Contains(Category);
-        //}
+        //TASK: create a class Book to store and manage book information stored in the file. 
+
     }
 }

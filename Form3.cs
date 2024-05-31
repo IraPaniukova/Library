@@ -19,8 +19,12 @@ namespace Library
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            if (!Book.BookByIsbnExists(isbnTextBox.Text))
+            { MessageBox.Show("Such ISBN doesn't exist"); }
+            else { 
             Book.DeleteBookFromFile(isbnTextBox.Text);
             this.Hide();
+        }
         }
     }
 }

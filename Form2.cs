@@ -10,8 +10,11 @@ using System.Windows.Forms;
 
 namespace Library
 {
+   
     public partial class Form2 : Form
-    {   
+    {
+        ReadDataFile data = new ReadDataFile();
+        BookDataStructure filteredData = new BookDataStructure();
         ProcessBooksData categorisedData = new ProcessBooksData();
         public Form2()
         {
@@ -19,8 +22,6 @@ namespace Library
         }
         private void viewAllButton_Click(object sender, EventArgs e)
         {
-            ReadDataFile data = new ReadDataFile();
-            BookDataStructure filteredData = new BookDataStructure();
             allBooksListBox.DataSource = data.ReadBooksFromFile();
             filteredLstBox.DataSource = filteredData.GetFilteredQueue().ToList();
         }
@@ -103,7 +104,7 @@ namespace Library
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            ReadDataFile data = new ReadDataFile();
+            
             allBooksListBox.DataSource = data.ReadBooksFromFile();
             Form3 f = new Form3(this)
             {
@@ -111,9 +112,9 @@ namespace Library
                 Location = new Point(this.Location.X + 400, this.Location.Y)
             };
             f.ShowDialog();
-            allBooksListBox.DataSource = null;
-            ReadDataFile dataNew = new ReadDataFile();
-            allBooksListBox.DataSource = dataNew.ReadBooksFromFile();
+            this.Hide();   //the simpliest way to create new instances just create a new form
+            Form2 form2 = new Form2();
+            form2.Show();
         }
     }
 }

@@ -60,8 +60,7 @@ namespace Library
             ReadDataFile data = new ReadDataFile();       
             foreach (var book in data.ReadBooksFromFile())
             {
-              //  MessageBox.Show($"ISBN: {book.Isbn}");
-                  books.Add(book.Isbn, book);  // Add book to the dictionary using ISBN as the key
+                  books.Add(book.Isbn, book);  // Adding book to the Dictionary using ISBN as the key
             }
             Console.WriteLine("boo");
             if (books.ContainsKey(isbn))
@@ -73,7 +72,6 @@ namespace Library
                     foreach (var book in books.Values)
                     {
                         writer.WriteLine($"{book.Isbn},{book.Authors},{book.BookName},{book.Publisher},{book.Year},{book.Category}");
-
                     }
                 }
             }

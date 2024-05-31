@@ -52,6 +52,7 @@
             this.clearSWdvlpmntButton = new System.Windows.Forms.Button();
             this.filteredBooksLabel = new System.Windows.Forms.Label();
             this.filteredLstBox = new System.Windows.Forms.ListBox();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // allBooksListBox
@@ -169,7 +170,7 @@
             // addNewBookButton
             // 
             this.addNewBookButton.BackColor = System.Drawing.Color.SteelBlue;
-            this.addNewBookButton.Location = new System.Drawing.Point(235, 536);
+            this.addNewBookButton.Location = new System.Drawing.Point(365, 536);
             this.addNewBookButton.Name = "addNewBookButton";
             this.addNewBookButton.Size = new System.Drawing.Size(116, 33);
             this.addNewBookButton.TabIndex = 12;
@@ -279,9 +280,9 @@
             this.filteredBooksLabel.AutoSize = true;
             this.filteredBooksLabel.Location = new System.Drawing.Point(33, 276);
             this.filteredBooksLabel.Name = "filteredBooksLabel";
-            this.filteredBooksLabel.Size = new System.Drawing.Size(73, 13);
+            this.filteredBooksLabel.Size = new System.Drawing.Size(178, 13);
             this.filteredBooksLabel.TabIndex = 23;
-            this.filteredBooksLabel.Text = "Filtered books";
+            this.filteredBooksLabel.Text = "Filtered books (published after 1990)";
             // 
             // filteredLstBox
             // 
@@ -292,12 +293,24 @@
             this.filteredLstBox.Size = new System.Drawing.Size(367, 225);
             this.filteredLstBox.TabIndex = 22;
             // 
+            // deleteButton
+            // 
+            this.deleteButton.BackColor = System.Drawing.Color.SteelBlue;
+            this.deleteButton.Location = new System.Drawing.Point(225, 536);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(116, 33);
+            this.deleteButton.TabIndex = 24;
+            this.deleteButton.Text = "DELETE A BOOK";
+            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(800, 591);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.filteredBooksLabel);
             this.Controls.Add(this.filteredLstBox);
             this.Controls.Add(this.clearSWdvlpmntButton);
@@ -356,5 +369,6 @@
         private System.Windows.Forms.Button clearSWdvlpmntButton;
         private System.Windows.Forms.Label filteredBooksLabel;
         private System.Windows.Forms.ListBox filteredLstBox;
+        private System.Windows.Forms.Button deleteButton;
     }
 }

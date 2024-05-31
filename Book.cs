@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace Library
@@ -23,6 +24,9 @@ namespace Library
         {          
             return Isbn + "," +Authors+","+ BookName + "," + Publisher+","+Year+","+Category ;
         }
+
+        //TASK: create a class Book to store and manage book information stored in the file.
+        //That is why I have here following methods to store and manage books:
         public static void WriteBookToFile(string bookDescription)
         {
             string filePath = "C:\\Users\\I\\source\\repos\\Library\\bin\\Debug\\data.txt";
@@ -30,7 +34,51 @@ namespace Library
             Books.Add(bookDescription);
             File.WriteAllLines(filePath, Books);
         }
-        //TASK: create a class Book to store and manage book information stored in the file. 
+        public static bool BookByIsbnExists(string isbn)
+        {
+            ReadDataFile data = new ReadDataFile();
+            foreach (var book in data.ReadBooksFromFile())
+            {
+                if (isbn == book.Isbn)
+                    return true;
+            }
+            return false;
+        }
+        public static Book FindBookByIsbn(string isbn)
+        {
+            ReadDataFile data = new ReadDataFile();
+            foreach (var book in data.ReadBooksFromFile())
+            {
+                if (isbn == book.Isbn)
+                    return book;
+            }
+            return null;
+        }
+
+        public static void DeleteBookFromFile(string isbn) //just to show usage of a Dictionary
+        {   Dictionary<string, Book> books = new Dictionary<string, Book>();
+            ReadDataFile data = new ReadDataFile();       
+            foreach (var book in data.ReadBooksFromFile())
+            {
+              //  MessageBox.Show($"ISBN: {book.Isbn}");
+                  books.Add(book.Isbn, book);  // Add book to the dictionary using ISBN as the key
+            }
+            Console.WriteLine("boo");
+            if (books.ContainsKey(isbn))
+            {
+                books.Remove(isbn);
+                File.WriteAllText("data.txt", string.Empty);
+                using (StreamWriter writer = new StreamWriter("data.txt", true))
+                {
+                    foreach (var book in books.Values)
+                    {
+                        writer.WriteLine($"{book.Isbn},{book.Authors},{book.BookName},{book.Publisher},{book.Year},{book.Category}");
+
+                    }
+                }
+            }
+        }
+      
 
     }
 }

@@ -52,6 +52,9 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.alertTextBox = new System.Windows.Forms.TextBox();
             this.viewButton = new System.Windows.Forms.Button();
+            this.findBookButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.NoteTextBox = new System.Windows.Forms.TextBox();
             this.bookDscrptnGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -250,7 +253,7 @@
             // saveBookButton
             // 
             this.saveBookButton.BackColor = System.Drawing.Color.SteelBlue;
-            this.saveBookButton.Location = new System.Drawing.Point(671, 206);
+            this.saveBookButton.Location = new System.Drawing.Point(661, 56);
             this.saveBookButton.Name = "saveBookButton";
             this.saveBookButton.Size = new System.Drawing.Size(75, 33);
             this.saveBookButton.TabIndex = 1;
@@ -264,7 +267,7 @@
             this.alertTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.alertTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.alertTextBox.ForeColor = System.Drawing.Color.Pink;
-            this.alertTextBox.Location = new System.Drawing.Point(671, 245);
+            this.alertTextBox.Location = new System.Drawing.Point(661, 94);
             this.alertTextBox.Multiline = true;
             this.alertTextBox.Name = "alertTextBox";
             this.alertTextBox.Size = new System.Drawing.Size(75, 99);
@@ -282,12 +285,51 @@
             this.viewButton.UseVisualStyleBackColor = false;
             this.viewButton.Click += new System.EventHandler(this.viewButton_Click);
             // 
+            // findBookButton
+            // 
+            this.findBookButton.BackColor = System.Drawing.Color.SteelBlue;
+            this.findBookButton.Location = new System.Drawing.Point(661, 228);
+            this.findBookButton.Name = "findBookButton";
+            this.findBookButton.Size = new System.Drawing.Size(123, 33);
+            this.findBookButton.TabIndex = 5;
+            this.findBookButton.Text = "FIND BOOK BY ISBN";
+            this.findBookButton.UseVisualStyleBackColor = false;
+            this.findBookButton.Click += new System.EventHandler(this.findBookButton_Click);
+            // 
+            // clearButton
+            // 
+            this.clearButton.BackColor = System.Drawing.Color.SteelBlue;
+            this.clearButton.Location = new System.Drawing.Point(661, 267);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(123, 33);
+            this.clearButton.TabIndex = 6;
+            this.clearButton.Text = "CLEAR FIELDS";
+            this.clearButton.UseVisualStyleBackColor = false;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
+            // NoteTextBox
+            // 
+            this.NoteTextBox.BackColor = System.Drawing.Color.SteelBlue;
+            this.NoteTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NoteTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NoteTextBox.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.NoteTextBox.Location = new System.Drawing.Point(661, 306);
+            this.NoteTextBox.Multiline = true;
+            this.NoteTextBox.Name = "NoteTextBox";
+            this.NoteTextBox.Size = new System.Drawing.Size(123, 41);
+            this.NoteTextBox.TabIndex = 7;
+            this.NoteTextBox.Text = "To add a new book clear the fields";
+            this.NoteTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.NoteTextBox);
+            this.Controls.Add(this.clearButton);
+            this.Controls.Add(this.findBookButton);
             this.Controls.Add(this.viewButton);
             this.Controls.Add(this.alertTextBox);
             this.Controls.Add(this.saveBookButton);
@@ -328,6 +370,9 @@
         private System.Windows.Forms.Label authorsLabel;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button viewButton;
+        private System.Windows.Forms.Button findBookButton;
+        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.TextBox NoteTextBox;
     }
 }
 

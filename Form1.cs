@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -19,6 +20,7 @@ namespace Library
         {
             InitializeComponent();
             alertTextBox.Visible = false;
+            NoteTextBox.Visible = false;    
         }
 
         private void addAuthorButtton_Click(object sender, EventArgs e)
@@ -26,8 +28,10 @@ namespace Library
             string author = authorTextBox.Text;
             if (!string.IsNullOrEmpty(authorTextBox.Text))
             {
-                Authors.Add(author);
-                authorsListBox.Items.Add(author);
+                string properAuthor = new CultureInfo("en-US", false).TextInfo.ToTitleCase(author.ToLower()).Trim();
+                Authors.Add(properAuthor);
+                authorsListBox.Items.Add(properAuthor);
+                authorsListBox.BackColor = SystemColors.InactiveCaption;
                 authorTextBox.Clear();
             }
         }
@@ -50,45 +54,51 @@ namespace Library
                 string.IsNullOrEmpty(categoryTextBox.Text)
                 )
             {
+                if (authorsListBox.Items.Count == 0)
+                {
+                    authorsListBox.BackColor = Color.LightPink;
+                }
                 await Alert("CAN NOT ADD! SOME FIELDS ARE EMPTY!");
-                //   MessageBox.Show("Some fields are empty");
-                if (authorsListBox.Items.Count == 0)  
-                {authorsListBox.BackColor = Color.LightPink;
-                 await Task.Delay(2000);
-                 authorsListBox.BackColor = SystemColors.InactiveCaption;
-                }           
+                //   MessageBox.Show("Some fields are empty");                      
             }
             else
             {
-                int year = 0;
-                if (int.TryParse(yearTextBox.Text, out _))
+                if (Book.BookByIsbnExists(isbnTextBox.Text))
+                { MessageBox.Show("Such ISBN already exists"); }
+                else
                 {
-                    year = int.Parse(yearTextBox.Text);
-                    string isbn = isbnTextBox.Text;
-                    string bookAuthors = string.Join(":", Authors);
-                    string bookName = bookNameTextBox.Text;
-                    string publisher = publisherTextBox.Text;
 
-                    string category = categoryTextBox.Text;
-                    string bookDescription = isbn + "," + bookAuthors + "," + bookName + "," + publisher + "," + year + "," + category;
-                    Book.WriteBookToFile(bookDescription);
-                    isbnTextBox.Clear();
-                    bookNameTextBox.Clear();
-                    authorsListBox.Items.Clear();
-                    authorTextBox.Clear();
-                    publisherTextBox.Clear();
-                    yearTextBox.Clear();
-                    categoryTextBox.Clear();
+                    int year = 0;
+                    if (int.TryParse(yearTextBox.Text, out _))
+                    {
+                        year = int.Parse(yearTextBox.Text);
+                        string isbn = isbnTextBox.Text.ToUpper().Trim();
+                        string bookAuthors = string.Join(":", Authors);
+                        string bookName = new CultureInfo("en-US", false).TextInfo.ToTitleCase(bookNameTextBox.Text.ToLower()).Trim();
+                        string publisher = new CultureInfo("en-US", false).TextInfo.ToTitleCase(publisherTextBox.Text.ToLower()).Trim();
+                        string category = new CultureInfo("en-US", false).TextInfo.ToTitleCase(categoryTextBox.Text.ToLower()).Trim();
+                        string bookDescription = isbn + "," + bookAuthors + "," + bookName + "," + publisher + "," + year + "," + category;
+                        Book.WriteBookToFile(bookDescription);
+                        isbnTextBox.Clear();
+                        bookNameTextBox.Clear();
+                        authorsListBox.Items.Clear();
+                        authorTextBox.Clear();
+                        publisherTextBox.Clear();
+                        yearTextBox.Clear();
+                        categoryTextBox.Clear();
+                        Authors.Clear();
 
-                    await Alert("THE BOOK IS SAVED");
+                        await Alert("THE BOOK IS SAVED");
+                    }
+                    else { MessageBox.Show("You can add only digits in the year field"); }
                 }
-                else { MessageBox.Show("You can add only digits in the year field"); }
             }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
             authorsListBox.Items.Clear();
+            Authors.Clear();
         }
 
         private void viewButton_Click(object sender, EventArgs e)
@@ -96,6 +106,56 @@ namespace Library
             this.Hide();
             Form2 f = new Form2();
             f.Show();
+        }
+
+        private void findBookButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(isbnTextBox.Text))
+            {
+                MessageBox.Show("Add ISBN number to search");
+            }
+            else
+            {
+                if (!Book.BookByIsbnExists(isbnTextBox.Text))
+                { MessageBox.Show("No such ISBN"); }
+                else
+                {   Book found = Book.FindBookByIsbn(isbnTextBox.Text);               
+                    bookNameTextBox.Text = found.BookName ;
+                    authorsListBox.Items.Clear();
+                    List<string> authorList = found.Authors.Split(':').ToList();
+                    foreach(string item in authorList )
+                    {
+                        authorsListBox.Items.Add(item);
+                    }
+                    publisherTextBox.Text = found.Publisher;
+                    yearTextBox.Text = found.Year + "";
+                    categoryTextBox.Text = found.Category;
+                    bookNameTextBox.ReadOnly = true;
+                    authorTextBox.ReadOnly = true;
+                    publisherTextBox.ReadOnly = true;
+                    yearTextBox.ReadOnly = true;
+                    categoryTextBox.ReadOnly = true;
+                    NoteTextBox.Visible = true;
+                }
+            }
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            isbnTextBox.Clear();
+            bookNameTextBox.Clear();
+            authorsListBox.Items.Clear();
+            authorTextBox.Clear();
+            publisherTextBox.Clear();
+            yearTextBox.Clear();
+            categoryTextBox.Clear();
+            Authors.Clear();
+            bookNameTextBox.ReadOnly = false;
+            authorTextBox.ReadOnly = false;
+            publisherTextBox.ReadOnly = false;
+            yearTextBox.ReadOnly = false;
+            categoryTextBox.ReadOnly = false;
+            NoteTextBox.Visible = false;
         }
     }
 }

@@ -115,6 +115,7 @@ namespace Library
             this.Hide();   //the simpliest way to create new instances just create a new form
             Form2 form2 = new Form2();
             form2.Show();
+            MessageBox.Show("The book is deleted successfully");
         }
     }
 }

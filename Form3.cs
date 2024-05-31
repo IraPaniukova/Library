@@ -21,10 +21,11 @@ namespace Library
         {
             if (!Book.BookByIsbnExists(isbnTextBox.Text))
             { MessageBox.Show("Such ISBN doesn't exist"); }
-            else { 
-            Book.DeleteBookFromFile(isbnTextBox.Text);
-            this.Hide();
-        }
+            else
+            {
+                Book.DeleteBookFromFile(isbnTextBox.Text);
+                this.Hide();
+            }
         }
     }
 }
